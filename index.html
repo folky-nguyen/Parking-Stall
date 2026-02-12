@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PC Cá Nhân - Quản lý cấu hình</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>PC Cá Nhân</h1>
+      <p>Ứng dụng web giúp bạn lưu và theo dõi cấu hình máy tính cá nhân.</p>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>Thêm cấu hình</h2>
+        <form id="pc-form" class="form-grid" novalidate>
+          <label>
+            Tên máy
+            <input type="text" name="name" placeholder="Ví dụ: Laptop làm việc" required />
+          </label>
+          <label>
+            CPU
+            <input type="text" name="cpu" placeholder="Intel i7-12700H" required />
+          </label>
+          <label>
+            RAM (GB)
+            <input
+              type="text"
+              name="ram"
+              inputmode="numeric"
+              pattern="[0-9]+"
+              placeholder="16"
+              required
+            />
+          </label>
+          <label>
+            Ổ cứng (GB)
+            <input
+              type="text"
+              name="storage"
+              inputmode="numeric"
+              pattern="[0-9]+"
+              placeholder="512"
+              required
+            />
+          </label>
+          <label>
+            Mục đích
+            <select name="purpose" required>
+              <option value="">-- Chọn --</option>
+              <option>Học tập</option>
+              <option>Lập trình</option>
+              <option>Gaming</option>
+              <option>Thiết kế</option>
+              <option>Văn phòng</option>
+            </select>
+          </label>
+          <label class="full-width">
+            Ghi chú
+            <textarea name="note" rows="3" placeholder="Thông tin thêm về máy"></textarea>
+          </label>
+          <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+          <button type="submit">Lưu cấu hình</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="list-header">
+          <h2>Danh sách máy</h2>
+          <input id="search" type="search" placeholder="Tìm theo tên, CPU, mục đích..." />
+        </div>
+        <div id="stats" class="stats"></div>
+        <ul id="pc-list" class="pc-list"></ul>
+      </section>
+    </main>
+
+    <template id="pc-item-template">
+      <li class="pc-item">
+        <div class="pc-main">
+          <h3 class="pc-name"></h3>
+          <p class="pc-spec"></p>
+          <p class="pc-purpose"></p>
+          <p class="pc-note"></p>
+        </div>
+        <button class="delete-btn" type="button">Xóa</button>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
